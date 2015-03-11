@@ -129,7 +129,7 @@
 			
 			$scope.username=getCookie("username");
 			if($scope.username==""){
-				window.location.replace("index.php");
+				window.location.replace("index.html");
 			}
 			
 			function userComparator(a,b){
@@ -179,7 +179,7 @@
 			
 			$scope.logout=function(){
 				deleteCookie();
-				window.location.replace("index.php");
+				window.location.replace("index.html");
 			}
 			
 			var displayError=function(errorMsg){
