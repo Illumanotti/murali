@@ -1,0 +1,159 @@
+body {
+    background-image: url("../img/Background.jpg");
+	background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	overflow-x:hidden;
+
+}
+.login-field {
+    width: 100%;
+	height:40px;
+	padding:5px;
+}
+.lato-font{
+	font-family: 'Lato', sans-serif;
+	color:#FFF;
+	font-weight: 300;
+}
+
+.circle{
+	width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 15px;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  color: #1B8DB1;
+  background: #E3E3E3;
+ 
+}
+
+.circle-td{
+padding:7px;
+}
+
+.home-title{
+	font-size:40px;
+	font-weight:300;
+}
+
+.inbox-title{
+ letter-spacing: 4px;
+}
+
+.inbox-toggle:hover{
+color:#E3E3E3;
+}
+
+.inbox-box{
+border:solid 1px white;
+padding:10px;
+}
+
+.inbox-msgBox{
+  text-align: left;
+  padding-left: 50px;
+  padding-top:10px;
+}
+.inbox-toggle:visited{
+color:#FFF;
+}
+
+.login-btn{
+	font-family: 'Lato', sans-serif;
+    font-size: 40px;
+	font-weight: 300;
+	 letter-spacing: 3px;
+	color:#FFF;
+}
+
+.signup{
+	font-family: 'Lato', sans-serif;
+    font-size: 20px;
+	font-weight: 300;
+	 letter-spacing: 3px;
+	color:#FFF;
+}
+
+.login-btn:active{
+	color:#FFF;
+}
+
+.login-btn:visited{
+	color:#FFF;
+}
+
+.login-btn:hover{
+	color:#E3E3E3;
+}
+
+.signup:active{
+	color:#FFF;
+}
+
+.signup:hover{
+	color:#E3E3E3;
+}
+
+.login-arrow{
+font-size: 30px;
+	margin-left:20px;
+}
+
+.align-center{
+	text-align:center;
+}
+.login-field::-webkit-input-placeholder {
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+	font-weight: 300;
+    padding-left: 5px;
+	padding-top:0px;
+    letter-spacing: 2px;
+	 line-height: 1em;
+	 color:#1B8DB1;
+}
+.login-field:-moz-placeholder {
+    font-family: 'Lato', sans-serif;
+	font-weight: 300;
+    font-size: 25px;
+    padding-left: 5px;
+	padding-top:0px;
+    letter-spacing: 2px;
+	 line-height: 1em;
+	  color:#1B8DB1;
+}
+
+.nav-button{
+  background-color: #E3E3F3;
+  color: #1B8DB1;
+  display:inline-block;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom:10px;
+  width:20%
+}
+.login-field::-moz-placeholder {
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+	font-weight: 300;
+    padding-left: 5px;
+	padding-top:0px;
+    letter-spacing: 2px;
+	 line-height: 1em;
+	  color:#1B8DB1;
+}
+.login-field:-ms-input-placeholder {
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+	font-weight: 300;
+    padding-left: 5px;
+	padding-top:0px;
+    letter-spacing: 2px;
+	 line-height: 1em;
+	  color:#1B8DB1;
+}

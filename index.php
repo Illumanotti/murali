@@ -13,6 +13,8 @@
     <!-- Loading Flat UI -->
     <link href="dist/css/flat-ui.css" rel="stylesheet">
     <link href="docs/assets/css/demo.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -22,42 +24,40 @@
       <script src="dist/js/vendor/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body ng-controller="MainCtrl" style="background-color:cadetblue">
-    <div class="container">
+  <body ng-controller="MainCtrl" >
+    <div class="container" >
       <div class="demo-headline">
-        <h1 class="demo-logo">
-          <img src="img/icons/svg/clipboard.svg" alt="Clipboard">HR Manager
-          <small style="color:#E3E3E3">Are you game?</small>
-        </h1>
+       
       </div> <!-- /demo-headline -->
-	  
 	  <!---Login-->
 	  
 		<div class="row">
-			<div class="col-lg-offset-3 col-lg-6">
-          <div class="login-form">
-            <div class="form-group">
-              <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name" />
-              <label class="login-field-icon fui-user" for="login-name"></label>
-            </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
-              <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
-
-            <a class="btn btn-primary btn-lg btn-block" ng-click="login()" href="">Log in</a>
-			<br/>
-			<div class="row">
-			<div class="col-sm-6">
-			<a class="btn btn-warning btn-block " data-toggle="modal" data-target="#leaderboard" href="#"><span class="fui-list-bulleted"></span> Leaderboard</a>
+		
+			<div class="col-lg-offset-4 col-lg-5">
+			<p class="home-title inbox-title lato-font align-center">HR CHALLENGE
+			<small class="lato-font align-center" style="font-size:20px">are you game?</small></p>
+			<div id="loginMsg" style="display:none;"class="alert alert-danger" role="alert"></div>
 			
-			</div>
+            <div class="form-group">
+              <input type="text" class="login-field" value="" placeholder="username" id="login-name" />
+             
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="login-field" value="" placeholder="password" id="login-pass" />
+              
+            </div>
+
+            <div class="row align-center"><a class="login-btn" ng-click="login()" href="">LOGIN<span class="glyphicon glyphicon-circle-arrow-right login-arrow"></span></a></div>
+			<br/>
+			
+			<div class="row align-center">
+
 			<div class="col-sm-6">
-			<a class="btn btn-success btn-block" data-toggle="modal" data-target="#signupModal" href="#"><span class="fui-new"></span> Sign up</a>
+			<a class="signup" data-toggle="modal" data-target="#signupModal" href="#"><span class="fui-new"></span> Sign up</a>
 			</div>
 			</div>
-          </div>
+         
 		  </div>
        </div>
 	   
@@ -109,33 +109,10 @@
 </div>
 
 
-<!--LeaderBoard Modal-->
 
-<div class="modal fade" id="leaderboard" tabindex="-1" role="dialog" aria-labelledby="leaderLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="leaderLabel">Leaderboard</h4>
-      </div>
-      <div class="modal-body">
-        <table class="table table-striped">
-					<tr><th>Username</th><th>Score</th></tr>
-					<tr  ng-repeat="user in leaderboard">
-						<td>{{user.username}}</td><td>{{user.score}}</td>
-					</tr>
-				</table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <script src="dist/js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
 	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/bootstrap.js"></script>
   <script src='js/lib/firebase.js'></script>
   <script src='js/lib/angularfire.min.js'></script>
   
@@ -160,9 +137,10 @@
 				for(var i=0;i<$scope.users.length;i++){
 					if($scope.users[i].username==$("#login-name").val() && $scope.users[i].password==$("#login-pass").val()){
 						setCookie("username",$scope.users[i].username,1);
-						window.location.replace("question.html");
+						window.location.replace("home.php");
 					}
 				};
+				displayLoginError("Invalid username/password");
 			}
 			
 			$scope.register=function(){
@@ -174,7 +152,7 @@
 					$scope.users.$add({username:username,password:password,score:0});
 					console.log(username);
 					setCookie("username",username,1);
-					window.location.replace("question.html");
+					window.location.replace("home.php");
 				}else{
 					displayError("Password and confirm password not matched");
 				}
@@ -185,6 +163,13 @@
 					$("#errorMsg").append(errorMsg);
 					
 					$("#errorMsg").fadeIn().delay(2000).fadeOut();
+			};
+			
+			var displayLoginError=function(errorMsg){
+				$("#loginMsg").empty();
+					$("#loginMsg").append(errorMsg);
+					
+					$("#loginMsg").fadeIn();
 			};
 			function userComparator(a,b){
 				

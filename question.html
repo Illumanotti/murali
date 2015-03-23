@@ -11,7 +11,7 @@
 
     <!-- Loading Flat UI -->
     <link href="dist/css/flat-ui.css" rel="stylesheet">
-
+	<link href="css/style.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -25,16 +25,19 @@
     <div class="container">
       <div class="demo-headline">
         <h1 class="demo-logo">
-          <img src="img/icons/svg/clipboard.svg" alt="Clipboard">HR Manager
-          <small style="color:#E3E3E3">Challenger: {{userObj.username}}</small>
-        </h1><br/>
-		  <div class="col-lg-offset-5 col-lg-2"><a class="btn btn-danger btn-lg btn-block" ng-click="logout()" href="#">Let me out!</a></div>
-      </div> <!-- /demo-headline -->
+          
+          <br/><br/><br/>
+        </h1>
+ <!-- /demo-headline -->
 	  
 	  <!---Questions-->
 	  
 		<div class="row">
 			<div class="col-lg-offset-3 col-lg-6">
+			<p class="home-title lato-font align-center inbox-title">Challenger:{{userObj.username}}</p>
+			<div class="col-lg-12 align-center lato-font">
+				
+		  </div>
           <div style="border:5px solid;" class="login-form">
             <div class="form-group">
 			<div id="errorMsg" style="display:none" class="alert alert-danger">
@@ -80,7 +83,7 @@
 				</table>
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" ng-click="logout()" class="btn btn-default" data-dismiss="modal">Back to Main</button>
+				<button type="button" ng-click="backToMain()" class="btn btn-default" data-dismiss="modal">Back to Main</button>
 			  </div>
 			</div>
 		  </div>
@@ -89,8 +92,10 @@
 	   
 
 
-    <script src="dist/js/vendor/jquery.min.js"></script>
+      <script src="js/vendor/jquery.min.js"></script>
+	 
 	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/bootstrap.js"></script>
   <script src='js/lib/firebase.js'></script>
   <script src='js/lib/angularfire.min.js'></script>
     <script>
@@ -155,11 +160,9 @@
 							var total=parseInt($scope.userObj.score)+parseInt($scope.selectedChoice.score);
 							$scope.userObj.score=total;
 							$scope.users.$save($scope.userObj);
-							if(typeof $scope.selectedChoice.moveTo!='undefined'){
+							if($scope.selectedChoice.moveTo!=''){
 							$scope.currentQuestion=$scope.question[$scope.selectedChoice.moveTo];
-							
-							
-							
+
 							}else{
 								//show end of journey
 								var list= $scope.users.slice();
@@ -172,9 +175,8 @@
 					}
 			}
 			
-			$scope.logout=function(){
-				deleteCookie();
-				window.location.replace("index.php");
+			$scope.backToMain=function(){
+				window.location.replace("home.php");
 			}
 			
 			var displayError=function(errorMsg){
